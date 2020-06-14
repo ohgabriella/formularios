@@ -1,5 +1,11 @@
 # formulario-final
 
+## Project definition
+
+Nesse projeto pratico o que aprendi no curso sobre formularios usando VueJs. Esse curso é um curso da Udemy que ensina muita coisa sobre VueJs. Nele aprendemos como esse framework funciona e como podemos fazer projetos incríveis. 
+
+O link do curso é esse aqui -> (https://www.udemy.com/course/vue-js-completo/)
+
 ## Project setup
 ```
 npm install
