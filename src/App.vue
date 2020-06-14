@@ -18,30 +18,34 @@
         </Rotulo>
         <Rotulo nome="Características do Problema">
           <span class="mr-4">
-            <input type="checkbox" value="reproduzivel" v-model="caracteristicas"/> Reproduzível
+            <input type="checkbox" value="reproduzivel" v-model="caracteristicas" /> Reproduzível
           </span>
           <span>
-            <input type="checkbox" value="intermitente" v-model="caracteristicas"/> Intermitente
+            <input type="checkbox" value="intermitente" v-model="caracteristicas" /> Intermitente
           </span>
         </Rotulo>
         <Rotulo nome="Qual produto?">
           <span class="mr-4">
-            <input type="radio" /> Web
+            <input type="radio" value="web" v-model="produto" /> Web
           </span>
           <span class="mr-4">
-            <input type="radio"  /> Mobile
+            <input type="radio" value="mobile" v-model="produto" /> Mobile
           </span>
           <span>
-            <input type="radio" /> Outro
+            <input type="radio" value="outro" v-model="produto" /> Outro
           </span>
         </Rotulo>
         <Rotulo nome="Prioridade">
-          <select name id >
-            <option></option>
+          <select v-model="prioridade">
+            <option v-for="(prioridade) in prioridades" 
+            :value="prioridade.nome"
+            :key="prioridade.codigo" 
+            :selected="prioridade.codigo === 3"
+            >{{ prioridade.nome }}</option>
           </select>
         </Rotulo>
         <Rotulo nome="Primeira Reclamação?">
-          <Escolha />
+          <Escolha v-model="escolha"/>
         </Rotulo>
         <hr />
         <button>Enviar</button>
@@ -63,20 +67,18 @@
         <Rotulo nome="Marque as Opções">
           <span>
             <ul>
-              <li v-for="caracteristica in caracteristicas" :key="caracteristica">
-                {{caracteristica}}
-              </li>
+              <li v-for="caracteristica in caracteristicas" :key="caracteristica">{{caracteristica}}</li>
             </ul>
           </span>
         </Rotulo>
         <Rotulo nome="Qual produto?">
-          <span>{{}}</span>
+          <span>{{ produto }}</span>
         </Rotulo>
         <Rotulo nome="Prioridade">
-          <span>{{}}</span>
+          <span>{{ prioridade }}</span>
         </Rotulo>
         <Rotulo nome="Primeira Reclamação?">
-          <span>{{}}</span>
+          <span>{{ escolha }}</span>
         </Rotulo>
       </div>
     </div>
@@ -92,17 +94,25 @@ export default {
   components: { Rotulo, Escolha },
   data() {
     return {
-      mensagem: '',
+      mensagem: "",
       caracteristicas: [],
+      produto: "web",
+      prioridade: 1,
+      prioridades: [
+        { codigo: 1, nome: "baixa" },
+        { codigo: 2, nome: "moderada" },
+        { codigo: 3, nome: "alta" }
+      ],
       usuario: {
-        email: '',
-        password: '',
-        idade: '',
-        mensagem: '',
-        problema: '',
-        produto: '',
-        prioridade: ''
-      }
+        email: "",
+        password: "",
+        idade: "",
+        mensagem: "",
+        problema: "",
+        produto: "",
+        prioridade: ""
+      },
+      escolha: 'true',
     };
   }
 };
