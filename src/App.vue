@@ -106,11 +106,7 @@ export default {
       usuario: {
         email: "",
         password: "",
-        idade: "",
-        mensagem: "",
-        problema: "",
-        produto: "",
-        prioridade: ""
+        idade: ""
       },
       escolha: 'true',
       enviado: false,
