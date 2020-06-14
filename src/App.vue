@@ -14,14 +14,14 @@
           <input type="number" v-model.number="usuario.idade" />
         </Rotulo>
         <Rotulo nome="Mensagem">
-          <textarea name cols="30" rows="5" ></textarea>
+          <textarea name cols="30" rows="5" v-model="mensagem"></textarea>
         </Rotulo>
         <Rotulo nome="Características do Problema">
           <span class="mr-4">
-            <input type="checkbox" value="reproduzivel" /> Reproduzível
+            <input type="checkbox" value="reproduzivel" v-model="caracteristicas"/> Reproduzível
           </span>
           <span>
-            <input type="checkbox" value="intermitente" /> Intermitente
+            <input type="checkbox" value="intermitente" v-model="caracteristicas"/> Intermitente
           </span>
         </Rotulo>
         <Rotulo nome="Qual produto?">
@@ -58,10 +58,16 @@
           <span>{{usuario.idade}}</span>
         </Rotulo>
         <Rotulo nome="Mensagem">
-          <span>{{}}</span>
+          <span style="white-space: pre;">{{mensagem}}</span>
         </Rotulo>
         <Rotulo nome="Marque as Opções">
-          <span>{{}}</span>
+          <span>
+            <ul>
+              <li v-for="caracteristica in caracteristicas" :key="caracteristica">
+                {{caracteristica}}
+              </li>
+            </ul>
+          </span>
         </Rotulo>
         <Rotulo nome="Qual produto?">
           <span>{{}}</span>
@@ -86,6 +92,8 @@ export default {
   components: { Rotulo, Escolha },
   data() {
     return {
+      mensagem: '',
+      caracteristicas: [],
       usuario: {
         email: '',
         password: '',
